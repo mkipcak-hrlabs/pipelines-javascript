@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu-16.04' # examples of other options: 'macOS-10.14', 'vs2017-win2016'
 
 steps:
 - task: NodeTool@0
@@ -18,11 +18,5 @@ steps:
 - script: |
     npm install
     npm run build
+    npx mocha
   displayName: 'npm install and build'
-  
-pool:
-  vmImage: 'ubuntu-16.04' # examples of other options: 'macOS-10.14', 'vs2017-win2016'
-  
-- task: NodeTool@0 
-  inputs:
-    versionSpec: '8.x' # replace this value with the version that you need for your project
